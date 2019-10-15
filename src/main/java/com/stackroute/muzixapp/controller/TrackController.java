@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "api/v1")
 public class TrackController {
@@ -30,6 +32,17 @@ public class TrackController {
 
         return responseEntity;
     }
+    @GetMapping("track/byname/{name}")
+    public ResponseEntity<?>getTrackByName(@PathVariable String name){
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity<List<Track>>(trackService.getTrackByName(name), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<?> deleteTrack(@PathVariable Integer id) {

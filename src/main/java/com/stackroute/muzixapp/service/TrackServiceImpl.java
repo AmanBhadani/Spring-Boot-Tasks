@@ -53,4 +53,11 @@ public class TrackServiceImpl implements TrackService{
         Track savedTrack = trackRepository.save(track1);
         return savedTrack;
     }
+
+
+
+    public List<Track> getTrackByName(String name) {
+        List<Track> tracks = trackRepository.findByname(name);
+        return tracks;
+    }
 }
