@@ -3,10 +3,12 @@ package com.stackroute.muzixapp.service;
 import com.stackroute.muzixapp.domain.Track;
 import com.stackroute.muzixapp.exceptions.TrackAlreadyExistsException;
 import com.stackroute.muzixapp.exceptions.TrackNotFoundException;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Profile("sample")
 @Service("dummy")
 public class TrackDummyServiceImpl implements TrackService {
     @Override
